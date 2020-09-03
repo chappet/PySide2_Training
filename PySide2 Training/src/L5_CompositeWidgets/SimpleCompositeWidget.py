@@ -11,18 +11,26 @@ import sys
 class QMyHelloWorld(QtWidgets.QWidget):
     def __init__(self):
         super().__init__()
+
+        self.setMaximumHeight(100)
         
         layout = QtWidgets.QVBoxLayout(self)
+ 
+        horLayout = QtWidgets.QHBoxLayout()
+        layout.addLayout(horLayout)
         
-        wdButton = QtWidgets.QPushButton("PRINT")
+        wdLabel = QtWidgets.QLabel("Name :")
+        horLayout.addWidget(wdLabel)
+        
+        self.wdLineEdit = QtWidgets.QLineEdit('')
+        horLayout.addWidget(self.wdLineEdit)
+
+        wdButton = QtWidgets.QPushButton("Say Hello")
         layout.addWidget(wdButton)
         wdButton.clicked.connect(self.PrintLine)
- 
-        self.wdLineEdit = QtWidgets.QLineEdit('')
-        layout.addWidget(self.wdLineEdit)
         
     def PrintLine(self):
-        print (self.wdLineEdit.text())
+        print ("Hello {}".format(self.wdLineEdit.text()))
         
 if __name__ == "__main__":
     app = QApplication(sys.argv)

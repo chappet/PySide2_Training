@@ -11,7 +11,7 @@ from PySide2 import QtCore, QtWidgets, QtGui
 from PySide2.QtWidgets import QApplication
 from PySide2.QtCore import Signal, Slot , QObject
 
-import sys
+import sys, numpy
 
 
 class WidgetMng():
@@ -19,6 +19,9 @@ class WidgetMng():
         
         #Create a list to persist the widget handles
         self.lstWdManager = []
+        
+        #create an array to show the memory impact
+        self.aDummy = numpy.array(1000000)
 
         #set a timer to print widget visible state
         self.timer = QtCore.QTimer()

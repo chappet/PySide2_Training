@@ -2,6 +2,8 @@
 Created on 15 nov. 2019
 
 @author: cchappet
+
+Display a simple QFrame and set some properties
 '''
 from PySide2 import QtCore, QtWidgets, QtGui
 from PySide2.QtWidgets import QApplication

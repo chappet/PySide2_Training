@@ -17,7 +17,7 @@ class MyApplication(QtWidgets.QMainWindow):
     A central widget with some dock widgets
     """       
     def __init__(self):
-        super().__init__()
+        super(MyApplication,self).__init__()
         
         #get the application handle to connect signal
         qApp = QtCore.QCoreApplication.instance()

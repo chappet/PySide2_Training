@@ -3,7 +3,7 @@ Created on 9 janv. 2020
 
 @author: cchappet
 
-This module demonstrates connection between standard widget signals and simple slots
+This module demonstrates the use of different types of signals
 '''
 from PySide2 import QtCore, QtWidgets, QtGui
 from PySide2.QtWidgets import QApplication
@@ -41,7 +41,7 @@ Create the demo windows
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     
-    #the only QApplication signal
+    #the only QApplication signal : focusChanged
     app.focusChanged.connect(FocusChanged)
     
     #Create the demo container
@@ -50,6 +50,8 @@ if __name__ == "__main__":
 
     #Some signals on QPushButton
     wdButton = QtWidgets.QPushButton("OK")
+    
+    #SIGNALS : clicked,pressed
     wdButton.clicked.connect(PrintOk)
     wdButton.pressed.connect(PrintPressed)
 
@@ -58,6 +60,8 @@ if __name__ == "__main__":
     #Some signals on QLineEdit
     wdLineEdit = QtWidgets.QLineEdit("")
     layout.addWidget(wdLineEdit)
+    
+    #SIGNALS : textChanged, cursorPositionChanged
     wdLineEdit.textChanged.connect(PrintText)
     wdLineEdit.cursorPositionChanged.connect(PrintPosition)
     
@@ -68,11 +72,14 @@ if __name__ == "__main__":
     wdListWidget.addItem(QtWidgets.QListWidgetItem("line 2"))
     wdListWidget.addItem(QtWidgets.QListWidgetItem("line 3"))
     
+    #SIGNALS : itemDoubleClicked
     wdListWidget.itemDoubleClicked.connect(ShowItem)
 
     #Connect a PushButton SIGNAL to a QListWidget SLOT
     wdButtonClear = QtWidgets.QPushButton("CLEAR LIST")
     layout.addWidget(wdButtonClear)
+    
+    #SIGNALS : clicked
     wdButtonClear.clicked.connect(wdListWidget.clear)
 
     #Some signals on QSlider

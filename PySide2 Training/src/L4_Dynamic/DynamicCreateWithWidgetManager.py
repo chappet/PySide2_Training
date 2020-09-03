@@ -24,6 +24,9 @@ class MyLabel(QtWidgets.QLabel):
         self.lstWdManager = lstWdManager
         lstWdManager.append(self)
 
+        #create an array to show the memory impact
+        self.aDummy = numpy.array(1000000)
+        
         #set a timer to print widget ID until widget deletion
         self.timer = QtCore.QTimer()
         self.timer.start(1000.)
@@ -34,8 +37,11 @@ class MyLabel(QtWidgets.QLabel):
         """
         the widget must be explicitly deleted !
         """
+        # delete the widget handle
         self.lstWdManager.remove(self)
-        self.deleteLater()
+        
+        # or delete the widget
+#         self.deleteLater()
     
     def PrintID(self):
         print (id(self))

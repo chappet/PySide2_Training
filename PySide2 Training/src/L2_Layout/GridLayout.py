@@ -2,6 +2,9 @@
 Created on 15 nov. 2019
 
 @author: cchappet
+
+Display various widget in a QGridLayout
+Show the effect of stretch and pan
 '''
 from PySide2 import QtCore, QtWidgets, QtGui
 from PySide2.QtWidgets import QApplication
@@ -26,6 +29,8 @@ if __name__ == "__main__":
     
     #Create Line Edit
     wdLineEdit_1 = QtWidgets.QLineEdit()
+    wdLineEdit_1.setSizePolicy(QtWidgets.QSizePolicy.Minimum,QtWidgets.QSizePolicy.Expanding)
+
     wdLineEdit_2 = QtWidgets.QLineEdit()
     wdLineEdit_3 = QtWidgets.QLineEdit()
     

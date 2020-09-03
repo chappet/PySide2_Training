@@ -2,6 +2,8 @@
 Created on 15 nov. 2019
 
 @author: cchappet
+
+Demonstrate some UCs of the QFileDialog 
 '''
 from PySide2 import QtCore, QtWidgets, QtGui
 from PySide2.QtWidgets import QApplication
@@ -19,23 +21,23 @@ def GetSaveFiles():
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     
-    layout = QtWidgets.QVBoxLayout()
     
     window = QtWidgets.QMainWindow()
 
     
     wdCentralFrame = QtWidgets.QFrame()
+    layout = QtWidgets.QVBoxLayout()
+    wdCentralFrame.setLayout(layout)
     
+    #a PushButton to display the QFileDialog
     wdCmdOpenFile = QtWidgets.QPushButton("Get Multiple File to Open")
     wdCmdOpenFile.clicked.connect(GetOpenFiles)
-    
-    wdCentralFrame.setLayout(layout)
     layout.addWidget(wdCmdOpenFile)
     
     window.setCentralWidget(wdCentralFrame)
 
+    # a menubar to display the QFileDialog
     menubar = QtWidgets.QMenuBar(window)
-#     menubar.setGeometry(QtCore.QRect(0, 0, 800, 21))
     menubar.setObjectName("menubar")
     menuFile = QtWidgets.QMenu(menubar)
     menuFile.setObjectName("menuFile")
@@ -54,7 +56,6 @@ if __name__ == "__main__":
     
     actionSave.setText("Save")
     actionSave.triggered.connect(GetSaveFiles)
-    
     
     window.show()
 

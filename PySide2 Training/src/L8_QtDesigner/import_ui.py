@@ -1,4 +1,5 @@
-from get_information import Ui_Dialog
+from Ui_Dialog_Info import Ui_Dialog
+from Ui_editor import Ui_MainWindow
 
 import sys
 from PySide2.QtWidgets import QApplication, QMainWindow
@@ -10,6 +11,19 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
+        self.ui.actionOpen.triggered.connect(self.open)
+        self.ui.actionGet_User_Info.triggered.connect(self.GetUserInfo)
+
+    def open(self):
+        print ("Open")
+
+    def GetUserInfo(self):
+        wd = InfoDialog(self).GetResult()
+        if wd : print (wd)
+    
+    def closeEvent(self,event):
+        print ("CloseEvent")
+        
 if __name__ == "__main__":
     app = QApplication(sys.argv)
 

@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file './ui\stretch.ui',
 # licensing of './ui\stretch.ui' applies.
 #
-# Created: Mon Jul 20 16:10:58 2020
+# Created: Fri Jul 24 12:31:32 2020
 #      by: pyside2-uic  running on PySide2 5.13.2
 #
 # WARNING! All changes made in this file will be lost!
