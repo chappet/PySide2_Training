@@ -2,7 +2,7 @@ from Ui_Dialog_Info import Ui_Dialog
 from Ui_editor import Ui_MainWindow
 
 import sys
-from PySide2.QtWidgets import QApplication, QMainWindow
+from PySide2.QtWidgets import QApplication, QMainWindow, QDialog
 from PySide2.QtCore import QFile
 
 class MainWindow(QMainWindow):
@@ -23,6 +23,21 @@ class MainWindow(QMainWindow):
     
     def closeEvent(self,event):
         print ("CloseEvent")
+
+class InfoDialog(QDialog):
+    def __init__(self, parent = None):
+        super(InfoDialog, self).__init__(parent)
+
+        self.ui = Ui_Dialog()
+        self.ui.setupUi(self)
+        
+
+    def GetResult(self):        
+        ok = self.exec()
+        print (ok)
+        
+        if ok : 
+            return {'name': self.ui.wdInputName.text(),'phone' : self.ui.wdInputPhone.text()}        
         
 if __name__ == "__main__":
     app = QApplication(sys.argv)

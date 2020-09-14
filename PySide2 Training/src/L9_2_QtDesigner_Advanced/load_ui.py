@@ -18,7 +18,6 @@ class MainWindow(QMainWindow):
         self.window.actionOpen.triggered.connect(self.open)
         self.window.actionGet_User_Info.triggered.connect(self.GetUserInfo)
 
-        
         self.setCentralWidget(self.window)
         self.show()
                 
@@ -29,9 +28,11 @@ class MainWindow(QMainWindow):
         wd = InfoDialog(self).GetResult()
         if wd : print (wd)
     
-    def closeEvent(self,event):
-        print ("CloseEvent")
-                
+#     def closeEvent(self,event):
+#         print ("CloseEvent")
+#         event.reject()
+
+
 
 class InfoDialog(QDialog):
     def __init__(self, parent = None):
@@ -41,17 +42,21 @@ class InfoDialog(QDialog):
         ui_file = QFile(ui_file_name)
             
         loader = QUiLoader()
-        self.wdDiag = loader.load(ui_file,parent)
+        self.ui = loader.load(ui_file,parent)
         ui_file.close()
 
     def GetResult(self):        
-        ok = self.wdDiag.exec()
+        ok = self.ui.exec()
         print (ok)
         
         if ok : 
-            return {'name': self.wdDiag.wdInputName.text(),'phone' : self.wdDiag.wdInputPhone.text()}
-             
-            
+            return {'name': self.ui.wdInputName.text(),'phone' : self.ui.wdInputPhone.text()}
+
+    def closeEvent(self,event):
+        print ("CloseEvent called")
+
+    def closeEvent(self,event):
+        print ("CloseEvent called")            
                     
 if __name__ == "__main__":
     app = QApplication(sys.argv)

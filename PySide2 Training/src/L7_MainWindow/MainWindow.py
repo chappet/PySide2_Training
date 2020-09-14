@@ -3,7 +3,7 @@ Created on 13 mars 2020
 
 @author: cchappet
 
-This module demonstrate the use of stylesheet to change widget appearance
+QMainWindow sample with actions, menubar, toolbar
 '''
 from PySide2 import QtCore, QtWidgets, QtGui
 from PySide2.QtWidgets import QApplication, QMainWindow, QPlainTextEdit,QFileDialog,QMessageBox,QAction
