@@ -34,6 +34,9 @@ if __name__ == "__main__":
         app.emit(QtCore.SIGNAL("SEND_MESSAGE(QString)"),'step1')        
         time.sleep(3)
         
+        # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        #Texts are not updated in GUI unless processEvents is called 
+        # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         print('step2')
         app.emit(QtCore.SIGNAL("SEND_MESSAGE(QString)"),'step2')
         for i in range(1000000):

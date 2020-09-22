@@ -1,5 +1,5 @@
-from Ui_Dialog_Info import Ui_Dialog
-from Ui_editor import Ui_MainWindow
+from Ui_Dialog import Ui_Dialog
+from Ui_MainWindow import Ui_MainWindow
 
 import sys
 from PySide2.QtWidgets import QApplication, QMainWindow, QDialog
@@ -38,7 +38,14 @@ class InfoDialog(QDialog):
         
         if ok : 
             return {'name': self.ui.wdInputName.text(),'phone' : self.ui.wdInputPhone.text()}        
-        
+
+    def accept(self):
+        if self.ui.wdInputName.text() == "" or self.ui.wdInputPhone.text() == "":
+            return False
+        else :
+            super().accept()
+    
+    
 if __name__ == "__main__":
     app = QApplication(sys.argv)
 
