@@ -20,16 +20,16 @@ class TimerUpdate(threading.Thread):
     This thread will update a widget label created in the main thread 
     and pass as an argument
     """
-    def __init__(self, app, fDelay):
+    def __init__(self, fDelay):
         super(TimerUpdate, self).__init__()
-        self.app = app
         self.fDelay = fDelay
     
     def run(self):
         while(1):
-            
+            print (type(QtCore.SIGNAL("UPDATE()")))
             # SIGNAL is application wide
-            self.app.emit(QtCore.SIGNAL("UPDATE()"))            
+            QApplication.instance().emit(QtCore.SIGNAL("UPDATE()"))
+#             self.app.emit(QtCore.SIGNAL("UPDATE()"))            
             time.sleep(self.fDelay)
 
 if __name__ == "__main__":
@@ -39,7 +39,7 @@ if __name__ == "__main__":
     wdFrm.setLayout(layout)
     
     #Create two labels that will display a counter
-    wdCounter = QtWidgets.QLineEdit("0")
+    wdCounter = QtWidgets.QLabel("0")
     layout.addWidget(wdCounter)
 
 
@@ -52,7 +52,7 @@ if __name__ == "__main__":
         
         
     #Launch the updating thread
-    timerThread = TimerUpdate(app, 0.005)
+    timerThread = TimerUpdate(0.005)
     timerThread.start()
 
 

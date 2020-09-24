@@ -15,6 +15,7 @@ from PySide2.QtCore import Signal, Slot
 import sys
 import numpy
 
+#Create a custom widget that inherited from QLineEdit
 class MyDisplay(QtWidgets.QLineEdit):
     """
     A custom QLineEdit
@@ -27,7 +28,7 @@ class MyDisplay(QtWidgets.QLineEdit):
         self.setText(str(1 + int(numpy.random.random() * 10)))        
         self.show()
         
-        parent.connect(QtCore.SIGNAL("CHANGE_COLOR(QColor)"),self.ChangeColor)
+        QApplication.instance().connect(QtCore.SIGNAL("CHANGE_COLOR(QColor)"),self.ChangeColor)
  
     def ChangeColor(self, color):
         self.setStyleSheet("background-color:rgb({},{},{})".format(color.red(), color.green(), color.blue()))

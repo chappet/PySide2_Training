@@ -20,6 +20,7 @@ if __name__ == "__main__":
     wd.setLayout(layout)
     layout.setColumnStretch(0,1)
     layout.setColumnStretch(1,2)
+    layout.setColumnStretch(2,2)
 
     
     #Create Push buttons
@@ -29,7 +30,8 @@ if __name__ == "__main__":
     
     #Create Line Edit
     wdLineEdit_1 = QtWidgets.QLineEdit()
-    wdLineEdit_1.setSizePolicy(QtWidgets.QSizePolicy.Minimum,QtWidgets.QSizePolicy.Expanding)
+    #Uncomment to test expanding behaviour
+#     wdLineEdit_1.setSizePolicy(QtWidgets.QSizePolicy.Minimum,QtWidgets.QSizePolicy.Expanding)
 
     wdLineEdit_2 = QtWidgets.QLineEdit()
     wdLineEdit_3 = QtWidgets.QLineEdit()
@@ -53,11 +55,6 @@ if __name__ == "__main__":
     layout.addWidget(wdButton_3,3,0,1,3)
     
 
-
-    
-
-  
-    
     wd.show()
 
     sys.exit(app.exec_())

@@ -22,6 +22,7 @@ if __name__ == "__main__":
     wdFrm.setFrameShape(QtWidgets.QFrame.Box)
     wdFrm.setLineWidth(5)    
     
+    #create a pushButton inside a QFrame by setting the parent
     wdPushButton = QtWidgets.QPushButton("Please Click !", parent = wdFrm)
     wdPushButton.move(10,10)
     wdPushButton.resize(100,40)

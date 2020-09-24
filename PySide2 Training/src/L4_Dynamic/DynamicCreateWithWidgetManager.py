@@ -19,32 +19,23 @@ class MyLabel(QtWidgets.QLabel):
     """
     
     """
-    def __init__(self, sLabel, lstWdManager):
+    def __init__(self, sLabel, parent = None):
         super(MyLabel, self).__init__(sLabel)
-        self.lstWdManager = lstWdManager
-        lstWdManager.append(self)
+        self.parent = parent
 
         #create an array to show the memory impact
         self.aDummy = numpy.array(1000000)
-        
-        #set a timer to print widget ID until widget deletion
-        self.timer = QtCore.QTimer()
-        self.timer.start(1000.)
-        QtCore.QObject.connect(self.timer, QtCore.SIGNAL("timeout()"),self.PrintID)
-
         
     def closeEvent(self, event):
         """
         the widget must be explicitly deleted !
         """
         # delete the widget handle
-        self.lstWdManager.remove(self)
+        self.parent.DeleteWidget(self)
         
         # or delete the widget
 #         self.deleteLater()
     
-    def PrintID(self):
-        print (id(self))
         
 class WidgetMng():
     """
@@ -52,13 +43,27 @@ class WidgetMng():
     """
     def __init__(self):
         self.lstWdManager = []
-
+        
+        #set a timer to print widget ID until widget deletion
+        self.timer = QtCore.QTimer()
+        self.timer.start(1000.)
+        QtCore.QObject.connect(self.timer, QtCore.SIGNAL("timeout()"),self.PrintVisible)
+        
     def CreateWidget(self):                    
-        wdLabel = MyLabel(str(len(self.lstWdManager)),self.lstWdManager)
+        wdLabel = MyLabel(str(len(self.lstWdManager)),parent = self)
+        self.lstWdManager.append(wdLabel)
         wdLabel.show()        
 
+    def DeleteWidget(self,idWidget):
+        del self.lstWdManager[self.lstWdManager.index(idWidget)]
+        
     def RestoreWidget(self):
         for wd in self.lstWdManager: wd.show()
+    
+    def PrintVisible(self):
+        print()
+        for wd in self.lstWdManager: 
+            print ("Widget {} is {}".format(id(wd),"Visible" if wd.isVisible() else "Hidden"))
            
 if __name__ == "__main__":
     app = QApplication(sys.argv)

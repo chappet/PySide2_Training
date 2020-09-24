@@ -13,7 +13,6 @@ import sys
 import threading
 import time
 
-
 """
 Create the demo windows
 """        
@@ -23,6 +22,10 @@ if __name__ == "__main__":
     #Some signals on QPushButton
     wdButton = QtWidgets.QPushButton("QUIT")
     wdButton.clicked.connect(app.quit)
+    
+    #--------------------------------------------------------------
+    #Exercise : Connect a new signal to print something before exit
+    #--------------------------------------------------------------
 
     wdButton.show()
     

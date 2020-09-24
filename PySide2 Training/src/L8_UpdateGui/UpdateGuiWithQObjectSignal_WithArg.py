@@ -4,7 +4,7 @@ Created on 9 janv. 2020
 @author: cchappet
 
 This module demonstrates a way to update a widget created in the main thread from another thread using Qt Signal
-ALWAYS use L3_Signals when you want to update widget created in the main thread
+ALWAYS use Signals when you want to update widget created in the main thread
 '''
 from PySide2 import QtCore, QtWidgets, QtGui
 from PySide2.QtWidgets import QApplication
@@ -15,7 +15,8 @@ import threading
 import time
 
 class SignalDefinitionClass(QObject):
-    signalUpdate = Signal(str)
+    #Be careful with argument type !!!
+    signalUpdate = Signal(int)
 
 class TimerUpdate(threading.Thread):
     """
@@ -43,7 +44,7 @@ if __name__ == "__main__":
     wdFrm.setLayout(layout)
     
     #Create two labels that will display a counter
-    wdCounter = QtWidgets.QLineEdit("0")
+    wdCounter = QtWidgets.QLabel("0")
     layout.addWidget(wdCounter)
 
 

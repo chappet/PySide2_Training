@@ -28,9 +28,9 @@ if __name__ == "__main__":
     wdButton = QtWidgets.QPushButton(text = "Close")
     layout.addWidget(wdButton)    
     
-    #Change Size Policy
-    wdButton.setMinimumHeight(50)
-    wdButton.setSizePolicy(QtWidgets.QSizePolicy.Minimum,QtWidgets.QSizePolicy.Expanding)
+    #Uncomment to change Size Policy
+#     wdButton.setMinimumHeight(50)
+#     wdButton.setSizePolicy(QtWidgets.QSizePolicy.Minimum,QtWidgets.QSizePolicy.Expanding)
 
     wd.show()
 

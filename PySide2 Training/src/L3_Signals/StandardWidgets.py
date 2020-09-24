@@ -26,6 +26,10 @@ if __name__ == "__main__":
 
     wdButton = QtWidgets.QPushButton("CLEAR")
     wdButton.clicked.connect(wdLine.clear)
+    
+    #Signal can be emitted by code
+#     wdButton.clicked.emit()
+
     wdButton.show()
     
     sys.exit(app.exec_())

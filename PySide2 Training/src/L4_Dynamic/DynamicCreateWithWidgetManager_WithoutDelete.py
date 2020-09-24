@@ -6,6 +6,7 @@ Created on 9 janv. 2020
 !!! NOT PERFECT !!!
 This module demonstrates a way to create and display one or several widgets from the main application
 IT IS NOT PERFECT because the widgets are not deleted by the red cross (simply hidden) !!!
+Use the Task Manager to monitor the memory used and check that memory space is not increasing when closing a widget
 '''
 from PySide2 import QtCore, QtWidgets, QtGui
 from PySide2.QtWidgets import QApplication
@@ -39,6 +40,7 @@ class WidgetMng():
             wd.show()
 
     def PrintVisible(self):
+        print()
         for wd in self.lstWdManager: 
             print ("Widget {} is {}".format(id(wd),"Visible" if wd.isVisible() else "Hidden"))
         

@@ -15,9 +15,9 @@ import sys
 
 #a function that create a new label widget    
 def CreateWidget():
+    print ("CreateWidget called")
     wdLabel = QtWidgets.QLabel()
-    wdLabel.show()        
-   
+    wdLabel.show()     
     
 if __name__ == "__main__":
     app = QApplication(sys.argv)
