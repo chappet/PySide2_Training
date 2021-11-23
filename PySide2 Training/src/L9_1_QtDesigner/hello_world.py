@@ -6,27 +6,28 @@ from PySide2.QtCore import QFile
 
 """
 Demonstrate how to display a dialog widget created with QtDesigner
+using QUiLoader().load
 
-Note : Some problems may arise in event management
+Note : problem with closeEvent management
 """
 
 class HelloWorldDiag(QDialog):
     def __init__(self, parent = None):
         super(HelloWorldDiag, self).__init__(parent)
         
-        ui_file_name = "ui/hello_world.ui"
-        ui_file = QFile(ui_file_name)
-            
-        loader = QUiLoader()
-        self.wdDiag = loader.load(ui_file,self)
-        ui_file.close()
+        self.wdDiag = QUiLoader().load("ui/hello_world.ui")
 
         self.wdDiag.wdButtonHello.clicked.connect(self.SayHello)
         self.wdDiag.show()
         
+        
     def SayHello(self):
         print ("Hello ", self.wdDiag.wdLine.text())
 
+    #HelloWorldDiag will never receive closeEvent
+    #The dialog is not shown, it just contains the hello_word wwidget
+    def closeEvent(self,event):
+        print("CloseEvent")
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

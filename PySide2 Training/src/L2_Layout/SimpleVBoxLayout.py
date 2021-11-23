@@ -22,15 +22,15 @@ if __name__ == "__main__":
     layout = QtWidgets.QVBoxLayout()
     wd.setLayout(layout)
     
-    wdButton = QtWidgets.QPushButton(text = "Open")
-    layout.addWidget(wdButton)
+    wdButton_1 = QtWidgets.QPushButton(text = "Open")
+    layout.addWidget(wdButton_1)
 
-    wdButton = QtWidgets.QPushButton(text = "Close")
-    layout.addWidget(wdButton)    
+    wdButton_2 = QtWidgets.QPushButton(text = "Close")
+    layout.addWidget(wdButton_2)    
     
     #Uncomment to change Size Policy
-#     wdButton.setMinimumHeight(50)
-#     wdButton.setSizePolicy(QtWidgets.QSizePolicy.Minimum,QtWidgets.QSizePolicy.Expanding)
+    wdButton_2.setMinimumHeight(50)
+    wdButton_2.setSizePolicy(QtWidgets.QSizePolicy.Minimum,QtWidgets.QSizePolicy.Expanding)
 
     wd.show()
 

@@ -11,7 +11,7 @@ from PySide2.QtWidgets import QApplication
 import sys
 
 def GetOpenFiles():
-    lstFiles = QtWidgets.QFileDialog().getOpenFileNames(filter = '*.doc')
+    lstFiles = QtWidgets.QFileDialog().getOpenFileNames(filter = '*.doc;;*.*')
     print (lstFiles)
 
 def GetSaveFiles():
@@ -21,11 +21,11 @@ def GetSaveFiles():
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     
-    
     window = QtWidgets.QMainWindow()
 
-    
     wdCentralFrame = QtWidgets.QFrame()
+    window.setCentralWidget(wdCentralFrame)
+    
     layout = QtWidgets.QVBoxLayout()
     wdCentralFrame.setLayout(layout)
     
@@ -34,7 +34,7 @@ if __name__ == "__main__":
     wdCmdOpenFile.clicked.connect(GetOpenFiles)
     layout.addWidget(wdCmdOpenFile)
     
-    window.setCentralWidget(wdCentralFrame)
+
 
     # a menubar to display the QFileDialog
     menubar = QtWidgets.QMenuBar(window)
@@ -42,6 +42,7 @@ if __name__ == "__main__":
     menuFile = QtWidgets.QMenu(menubar)
     menuFile.setObjectName("menuFile")
     window.setMenuBar(menubar)
+    
     actionOpen = QtWidgets.QAction(window)
     actionOpen.setObjectName("actionOpen")
     actionSave = QtWidgets.QAction(window)

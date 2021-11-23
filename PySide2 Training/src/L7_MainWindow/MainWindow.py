@@ -15,7 +15,6 @@ import sys
 
 from Ressources import ressources
 
-
 class MyTextEditor(QMainWindow):
 
     def __init__(self):
@@ -28,6 +27,8 @@ class MyTextEditor(QMainWindow):
         self.readSettings()
     
         self.setCurrentFile("")
+        
+        self.statusBar().showMessage('Ready')
 
     def createActions(self):
         
@@ -40,12 +41,13 @@ class MyTextEditor(QMainWindow):
         Act = QAction(QIcon(":/icons/new.png"), self.tr("&New"), self)
         Act.setShortcuts(QKeySequence.New)
         Act.setStatusTip(self.tr("Create a new file"))
+        Act.setToolTip(self.tr("Create a new file"))
         Act.triggered.connect(self.newFile)
      
         self.fileMenu.addAction(Act)
         self.toolBar.addAction(Act)
         
-        openAct =  QAction(QIcon(":/icons/openconf.png"), self.tr("&Open..."), self)
+        openAct =  QAction(QIcon(":/icons/recycle.png"), self.tr("&Open..."), self)
         openAct.setShortcuts(QKeySequence.Open)
         openAct.setStatusTip(self.tr("Open an existing file"))
         self.fileMenu.addAction(openAct)

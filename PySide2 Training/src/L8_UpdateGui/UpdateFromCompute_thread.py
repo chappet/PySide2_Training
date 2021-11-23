@@ -23,19 +23,26 @@ class ComputeThread(QtCore.QThread, QtCore.QObject):
         print('init')
         
         #emit a custom signal to send the name of the step
-        self.emit(QtCore.SIGNAL("SEND_MESSAGE(QString)"),'init')    #the signal is not application wide !    
+        self.emit(QtCore.SIGNAL("SEND_MESSAGE(QString)"),'init') 
+        QApplication.instance().emit(QtCore.SIGNAL("PROGRESS(int)"),10)       
         time.sleep(3)
         
         print('step1')
         self.emit(QtCore.SIGNAL("SEND_MESSAGE(QString)"),'step1')
+        QApplication.instance().emit(QtCore.SIGNAL("PROGRESS(int)"),20)       
+
         self.sleep(3)
 
         print('step2')
         self.emit(QtCore.SIGNAL("SEND_MESSAGE(QString)"),'step2')
+        QApplication.instance().emit(QtCore.SIGNAL("PROGRESS(int)"),60)       
+
         self.sleep(3)
         
         print('finish')
         self.emit(QtCore.SIGNAL("SEND_MESSAGE(QString)"),'finish')
+        QApplication.instance().emit(QtCore.SIGNAL("PROGRESS(int)"),100)       
+
 
 """
 Create the demo windows
@@ -52,6 +59,11 @@ if __name__ == "__main__":
     #A line edit to display computation step
     wdLineEdit = QtWidgets.QLineEdit("No computation running")
     layout.addWidget(wdLineEdit)
+    
+    wdProgress = QtWidgets.QProgressBar()
+    layout.addWidget(wdProgress)
+    app.connect(QtCore.SIGNAL("PROGRESS(int)"),wdProgress.setValue)
+    
     
     #connect to the custom signal to print the step in the QLineEdit
     computeThread.connect(QtCore.SIGNAL("SEND_MESSAGE(QString)"),wdLineEdit.setText)

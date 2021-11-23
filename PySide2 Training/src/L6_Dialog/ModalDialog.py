@@ -12,7 +12,7 @@ from PySide2 import QtCore, QtWidgets, QtGui
 from PySide2.QtWidgets import QApplication
 from  GenericDataInputForm import GenericDataInputForm
 
-DELAY = 5
+DELAY = 15
 
 class MyFrame(QtWidgets.QFrame):
     """
@@ -51,17 +51,23 @@ class MyFrame(QtWidgets.QFrame):
         ###############################################################################################
         #NON MODAL INFOS DIALOG DEFINITION
         ordDctData = collections.OrderedDict()
-        ordDctData['Position (float)'] = {'Type' : "QLineEdit", 'InitValue' : "10.0"}
-        ordDctData['Direction'] = {'Type' : "QComboBox", 'LstLabel' : ['Horizontal', 'Vertical'], 'CurrentValue' : 'Vertical'}
-        ordDctData['Color'] = {'Type' : "QComboBox", 'LstLabel' : ['Red', 'Blue', 'Green'], 'CurrentValue':'Blue'}
+        ordDctData['Pressure (bar'] = {'Type' : "QLineEdit", 'InitValue' : "1.0"}
+        ordDctData['unit'] = {'Type' : "QComboBox", 'LstLabel' : ['atm', 'psi'], 'CurrentValue':'Blue'}
         
         self.wdDiagInfoNonModal = GenericDataInputForm(ordDctData, "User Info", bShowButton = False)
 
     def GetResultModal(self):
         ordDctData = collections.OrderedDict()
-        ordDctData['Position (float)'] = {'Type' : "QLineEdit", 'InitValue' : "10.0"}
-        ordDctData['Direction'] = {'Type' : "QComboBox", 'LstLabel' : ['Horizontal', 'Vertical'], 'CurrentValue' : 'Vertical'}
-        ordDctData['Color'] = {'Type' : "QComboBox", 'LstLabel' : ['Red', 'Blue', 'Green'], 'CurrentValue':'Blue'}
+        ordDctData['Pressure (bar'] = {'Type' : "QLineEdit", 'InitValue' : "1.0"}
+        ordDctData['unit'] = {'Type' : "QComboBox", 'LstLabel' : ['atm', 'psi'], 'CurrentValue':'Blue'}
+        ordDctData['unit1'] = {'Type' : "QComboBox", 'LstLabel' : ['atm', 'psi'], 'CurrentValue':'Blue'}
+        ordDctData['unit2'] = {'Type' : "QComboBox", 'LstLabel' : ['atm', 'psi'], 'CurrentValue':'Blue'}
+        ordDctData['unit3'] = {'Type' : "QComboBox", 'LstLabel' : ['atm', 'psi'], 'CurrentValue':'Blue'}
+        ordDctData['unit4'] = {'Type' : "QComboBox", 'LstLabel' : ['atm', 'psi'], 'CurrentValue':'Blue'}
+        ordDctData['unit5'] = {'Type' : "QComboBox", 'LstLabel' : ['atm', 'psi'], 'CurrentValue':'Blue'}
+        ordDctData['unit6'] = {'Type' : "QComboBox", 'LstLabel' : ['atm', 'psi'], 'CurrentValue':'Blue'}
+        ordDctData['unit7'] = {'Type' : "QComboBox", 'LstLabel' : ['atm', 'psi'], 'CurrentValue':'Blue'}
+        ordDctData['unit8'] = {'Type' : "QSpinBox", 'InitValue': 5, 'Min' : 0., 'Max' : 10}
         
         wdDiagInfo = GenericDataInputForm(ordDctData, "User Info")
         dctInfos = wdDiagInfo.GetResultModal()
@@ -86,7 +92,7 @@ class MyFrame(QtWidgets.QFrame):
 
         while time.time() - time0 < DELAY : 
             timeElapse = time.time() - time0
-            self.parent.processEvents()
+            self.parent.processEvents() #comment line to show GUI freeze
             wdProgress.setValue(timeElapse * 100 / DELAY)
 
     def ShowProgressIndic(self):

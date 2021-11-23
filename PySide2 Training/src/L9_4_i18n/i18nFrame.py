@@ -25,18 +25,21 @@ class MyFrame(QtWidgets.QFrame):
         buttonBox.button(QtWidgets.QDialogButtonBox.Cancel).setText(buttonBox.tr("Cancel"))
         wdLayout.addWidget(buttonBox)
         
+
+      
 # --------------------------------------------------------------------
 if __name__ == "__main__":
 
+    app = QApplication(sys.argv)
+    
     translatorAppli = QtCore.QTranslator()
     translatorAppli.load('ModalDialog_fr.qm')
 
     translatorQt = QtCore.QTranslator()
     translatorQt.load('qt_fr.qm')
-
-    app = QApplication(sys.argv)
-#     app.installTranslator(translatorAppli)
-#     app.installTranslator(translatorQt)
+        
+    app.installTranslator(translatorAppli)
+    app.installTranslator(translatorQt)
 
     wdFrm = MyFrame()
     wdFrm.show()

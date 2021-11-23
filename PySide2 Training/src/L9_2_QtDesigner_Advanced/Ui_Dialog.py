@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file './ui\Ui_Dialog.ui',
 # licensing of './ui\Ui_Dialog.ui' applies.
 #
-# Created: Thu Sep 17 12:18:26 2020
+# Created: Thu Nov 18 11:43:29 2021
 #      by: pyside2-uic  running on PySide2 5.13.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -13,17 +13,17 @@ from PySide2 import QtCore, QtGui, QtWidgets
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(540, 348)
+        Dialog.resize(345, 104)
         self.gridLayout = QtWidgets.QGridLayout(Dialog)
         self.gridLayout.setObjectName("gridLayout")
         self.formLayout = QtWidgets.QFormLayout()
         self.formLayout.setObjectName("formLayout")
-        self.wdInputName = QtWidgets.QLineEdit(Dialog)
-        self.wdInputName.setObjectName("wdInputName")
-        self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.wdInputName)
         self.label = QtWidgets.QLabel(Dialog)
         self.label.setObjectName("label")
         self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label)
+        self.wdInputName = QtWidgets.QLineEdit(Dialog)
+        self.wdInputName.setObjectName("wdInputName")
+        self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.wdInputName)
         self.label_2 = QtWidgets.QLabel(Dialog)
         self.label_2.setObjectName("label_2")
         self.formLayout.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_2)

@@ -9,17 +9,17 @@ from PySide2 import QtCore, QtWidgets, QtGui
 from PySide2.QtWidgets import QApplication
 
 import sys
+
+def PrintDate(date):
+    print (date)
     
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     
-    wdFrm = QtWidgets.QFrame()
-    wdFrm.setFrameShadow(QtWidgets.QFrame.Raised)
-    wdFrm.setFrameShape(QtWidgets.QFrame.Box)
-    wdFrm.setLineWidth(15)
+    wdCal = QtWidgets.QCalendarWidget()
     
-    wdFrm.setToolTip("Bonjour")
-    
-    wdFrm.show()
+    wdCal.clicked.connect(PrintDate)
+        
+    wdCal.show()
 
     sys.exit(app.exec_())

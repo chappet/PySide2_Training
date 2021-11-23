@@ -3,9 +3,12 @@ Created on 9 janv. 2020
 
 @author: cchappet
 
-!!! NOT PERFECT !!!
-This module demonstrates a way to create, display and delete several widgets from the main application
-the widgets are deleted by the red cross !!!
+
+This module demonstrates how to close a widget correctly
+WARNING : Using the red X icon just hide the widget, not close is
+Must overload closeEvent
+
+!!! No need to disconnect SIGNALS, it is done automatically !!!
 '''
 from PySide2 import QtCore, QtWidgets, QtGui
 from PySide2.QtWidgets import QApplication
@@ -15,27 +18,29 @@ import sys
 import numpy
 
 
-class MyLabel(QtWidgets.QLabel):
+class MyLineEdit(QtWidgets.QLineEdit):
     """
-    
     """
     def __init__(self, sLabel, parent = None):
-        super(MyLabel, self).__init__(sLabel)
+        super(MyLineEdit, self).__init__(sLabel)
         self.parent = parent
 
         #create an array to show the memory impact
-        self.aDummy = numpy.array(1000000)
+        self.aDummy = numpy.array(100000000)
+
+    def PrintVisible(self):
+        print ("Widget {} is {}".format(id(self),"Visible" if self.isVisible() else "Hidden"))
         
-    def closeEvent(self, event):
-        """
-        the widget must be explicitly deleted !
-        """
-        # delete the widget handle
-        self.parent.DeleteWidget(self)
-        
-        # or delete the widget
-#         self.deleteLater()
-    
+
+#     def closeEvent(self, event):
+#         """
+#           Uncomment closeEvent the force the widget deletion
+#           Otherwise the widget is just hidden
+#         """  
+#  
+#         # call parents'widget manager to delete the widget
+#         self.parent.DeleteWidget(self)
+             
         
 class WidgetMng():
     """
@@ -47,24 +52,26 @@ class WidgetMng():
         #set a timer to print widget ID until widget deletion
         self.timer = QtCore.QTimer()
         self.timer.start(1000.)
-        QtCore.QObject.connect(self.timer, QtCore.SIGNAL("timeout()"),self.PrintVisible)
         
     def CreateWidget(self):                    
-        wdLabel = MyLabel(str(len(self.lstWdManager)),parent = self)
-        self.lstWdManager.append(wdLabel)
-        wdLabel.show()        
+        wdLine = MyLineEdit(str(len(self.lstWdManager)),parent = self)
+        self.lstWdManager.append(wdLine)
+        wdLine.show()        
 
+        QtCore.QObject.connect(self.timer, QtCore.SIGNAL("timeout()"),wdLine.PrintVisible)
+        
     def DeleteWidget(self,idWidget):
-        del self.lstWdManager[self.lstWdManager.index(idWidget)]
+        #widget deletion
+        #Signal timeout is also disconnected
+        self.lstWdManager[self.lstWdManager.index(idWidget)].deleteLater()
+        
+        #remove widget from manager list
+        self.lstWdManager.remove(idWidget) 
+    
         
     def RestoreWidget(self):
         for wd in self.lstWdManager: wd.show()
-    
-    def PrintVisible(self):
-        print()
-        for wd in self.lstWdManager: 
-            print ("Widget {} is {}".format(id(wd),"Visible" if wd.isVisible() else "Hidden"))
-           
+               
 if __name__ == "__main__":
     app = QApplication(sys.argv)
 

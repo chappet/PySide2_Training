@@ -84,6 +84,9 @@ if __name__ == "__main__":
 
     #Some signals on QSlider
     wdSlider = QtWidgets.QSlider(orientation = QtCore.Qt.Horizontal)
+    wdSlider.setMinimum(0)
+    wdSlider.setMaximum(5)
+    
     layout.addWidget(wdSlider)
     wdSlider.valueChanged.connect(PrintText)
 

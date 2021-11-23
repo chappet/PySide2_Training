@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file './ui\Ui_MainWindow.ui',
 # licensing of './ui\Ui_MainWindow.ui' applies.
 #
-# Created: Thu Sep 17 12:18:27 2020
+# Created: Thu Nov 18 11:43:30 2021
 #      by: pyside2-uic  running on PySide2 5.13.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -37,17 +37,20 @@ class Ui_MainWindow(object):
         self.actionOpen.setObjectName("actionOpen")
         self.actionNew = QtWidgets.QAction(MainWindow)
         self.actionNew.setObjectName("actionNew")
-        self.actionNew_2 = QtWidgets.QAction(MainWindow)
-        self.actionNew_2.setObjectName("actionNew_2")
         self.actionExit = QtWidgets.QAction(MainWindow)
         self.actionExit.setObjectName("actionExit")
         self.actionAbout_Qt = QtWidgets.QAction(MainWindow)
         self.actionAbout_Qt.setObjectName("actionAbout_Qt")
         self.actionGet_User_Info = QtWidgets.QAction(MainWindow)
         self.actionGet_User_Info.setObjectName("actionGet_User_Info")
+        self.actionSaveAs = QtWidgets.QAction(MainWindow)
+        self.actionSaveAs.setObjectName("actionSaveAs")
+        self.actionSave = QtWidgets.QAction(MainWindow)
+        self.actionSave.setObjectName("actionSave")
         self.menuFile.addAction(self.actionOpen)
+        self.menuFile.addAction(self.actionSave)
+        self.menuFile.addAction(self.actionSaveAs)
         self.menuFile.addAction(self.actionNew)
-        self.menuFile.addAction(self.actionNew_2)
         self.menuFile.addSeparator()
         self.menuFile.addAction(self.actionExit)
         self.menuHelp.addAction(self.actionAbout_Qt)
@@ -61,11 +64,12 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QtWidgets.QApplication.translate("MainWindow", "MainWindow", None, -1))
         self.menuFile.setTitle(QtWidgets.QApplication.translate("MainWindow", "File", None, -1))
-        self.menuHelp.setTitle(QtWidgets.QApplication.translate("MainWindow", "Help", None, -1))
+        self.menuHelp.setTitle(QtWidgets.QApplication.translate("MainWindow", "About", None, -1))
         self.actionOpen.setText(QtWidgets.QApplication.translate("MainWindow", "Open", None, -1))
-        self.actionNew.setText(QtWidgets.QApplication.translate("MainWindow", "Save", None, -1))
-        self.actionNew_2.setText(QtWidgets.QApplication.translate("MainWindow", "New", None, -1))
+        self.actionNew.setText(QtWidgets.QApplication.translate("MainWindow", "New", None, -1))
         self.actionExit.setText(QtWidgets.QApplication.translate("MainWindow", "Exit", None, -1))
         self.actionAbout_Qt.setText(QtWidgets.QApplication.translate("MainWindow", "About Qt", None, -1))
-        self.actionGet_User_Info.setText(QtWidgets.QApplication.translate("MainWindow", "Get User Infos", None, -1))
+        self.actionGet_User_Info.setText(QtWidgets.QApplication.translate("MainWindow", "User Infos", None, -1))
+        self.actionSaveAs.setText(QtWidgets.QApplication.translate("MainWindow", "SaveAs", None, -1))
+        self.actionSave.setText(QtWidgets.QApplication.translate("MainWindow", "Save", None, -1))
 

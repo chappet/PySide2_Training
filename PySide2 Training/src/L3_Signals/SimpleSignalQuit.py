@@ -13,6 +13,7 @@ import sys
 import threading
 import time
 
+    
 """
 Create the demo windows
 """        
@@ -24,7 +25,7 @@ if __name__ == "__main__":
     wdButton.clicked.connect(app.quit)
     
     #--------------------------------------------------------------
-    #Exercise : Connect a new signal to print something before exit
+    #Exercise : Connect signal to print something before exit
     #--------------------------------------------------------------
 
     wdButton.show()

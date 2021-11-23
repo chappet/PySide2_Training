@@ -9,17 +9,13 @@ Demonstrate how to display a dialog widget created with QtDesigner
 BAD solution ! 
 Better create a QDialog and load the ui into it.
 """
-
+def Test():
+    print ("TEST")
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
 
-    ui_file_name = "ui/hello_world.ui"
-    ui_file = QFile(ui_file_name)
-        
-    loader = QUiLoader()
-    wdDiag = loader.load(ui_file)
-    ui_file.close()
+    wdDiag = QUiLoader().load("ui/hello_world.ui")
 
     def SayHello(self):
         print ("Hello ", wdDiag.wdLine.text())
