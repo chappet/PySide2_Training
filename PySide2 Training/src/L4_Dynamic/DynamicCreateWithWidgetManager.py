@@ -24,6 +24,9 @@ class MyLineEdit(QtWidgets.QLineEdit):
     def __init__(self, sLabel, parent = None):
         super(MyLineEdit, self).__init__(sLabel)
         self.parent = parent
+        
+        #If attribut is set, the widget is automatically deleted when closed
+        self.setAttribute(QtCore.Qt.WA_DeleteOnClose)
 
         #create an array to show the memory impact
         self.aDummy = numpy.array(100000000)
@@ -32,14 +35,14 @@ class MyLineEdit(QtWidgets.QLineEdit):
         print ("Widget {} is {}".format(id(self),"Visible" if self.isVisible() else "Hidden"))
         
 
-#     def closeEvent(self, event):
-#         """
-#           Uncomment closeEvent the force the widget deletion
-#           Otherwise the widget is just hidden
-#         """  
-#  
-#         # call parents'widget manager to delete the widget
-#         self.parent.DeleteWidget(self)
+    def closeEvent(self, event):
+        """
+          Uncomment closeEvent the force the widget deletion
+          Otherwise the widget is just hidden
+        """  
+        print ("closeEvent")
+        # call parents'widget manager to delete the widget
+        self.parent.DeleteWidget(self)
              
         
 class WidgetMng():

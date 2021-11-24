@@ -180,9 +180,9 @@ class MyTextEditor(QMainWindow):
     def closeEvent(self, event):
         if self.maybeSave():
             self.writeSettings()
-            event.accept()
+            event.accept() #Close the Mainwindow
         else:
-            event.ignore()   
+            event.ignore() #Do not close Mainwindow   
 
     def exit(self):
         self.close() #with call to closeEvent

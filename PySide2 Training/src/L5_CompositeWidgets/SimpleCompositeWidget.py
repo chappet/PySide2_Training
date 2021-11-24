@@ -2,6 +2,9 @@
 Created on 15 nov. 2019
 
 @author: cchappet
+
+Demonstrate the creation of a composite widget
+Useful for user defines widgets that use diffents kings of widget to fullfill a tack
 '''
 from PySide2 import QtCore, QtWidgets, QtGui
 from PySide2.QtWidgets import QApplication
