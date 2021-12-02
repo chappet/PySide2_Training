@@ -4,7 +4,7 @@ Created on 9 janv. 2020
 @author: cchappet
 
 This module demonstrates a way to update a widget created in the main thread from another thread using Qt Signal
-ALWAYS use L3_Signals when you want to update widget created in the main thread
+ALWAYS use Signals when you want to update widget created in the main thread
 '''
 from PySide2 import QtCore, QtWidgets, QtGui
 from PySide2.QtWidgets import QApplication

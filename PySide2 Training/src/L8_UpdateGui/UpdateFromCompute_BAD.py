@@ -20,48 +20,57 @@ import time
 """
 Create the demo windows
 """        
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
+class MyFrame(QtWidgets.QFrame):
+    """
+    The test dashboard
+    """
+    def __init__(self, parent):
+        self.parent = parent
 
-    def Compute():
+        super(MyFrame, self).__init__()
+        wdLayout = QtWidgets.QVBoxLayout()
+        self.setLayout(wdLayout)
+        
+        self.longRunningBtn = QtWidgets.QPushButton("Run Computation")
+        wdLayout.addWidget(self.longRunningBtn)
+        self.longRunningBtn.clicked.connect(self.Compute)
+
+        #A line edit to display computation step
+        self.wdLineEdit = QtWidgets.QLineEdit("No computation running")
+        wdLayout.addWidget(self.wdLineEdit)
+        
+
+    def Compute(self):
         print('init')
         
-        #emit a custom signal to send the name of the step
-        app.emit(QtCore.SIGNAL("SEND_MESSAGE(QString)"),'init')        
+        #Try to display a message
+        self.wdLineEdit.setText('init')        
         time.sleep(3)
 
+        #Try to display a message
         print('step1')
-        app.emit(QtCore.SIGNAL("SEND_MESSAGE(QString)"),'step1')        
+        self.wdLineEdit.setText('step1')        
         time.sleep(3)
         
         # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         #Texts are not updated in GUI unless processEvents is called 
         # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         print('step2')
-        app.emit(QtCore.SIGNAL("SEND_MESSAGE(QString)"),'step2')
+        self.wdLineEdit.setText('step2')
         for i in range(1000000):
             app.processEvents() #let the main loop process gui events.
         
         print('finish')
-        app.emit(QtCore.SIGNAL("SEND_MESSAGE(QString)"),'finish')
+        self.wdLineEdit.setText('finish')
     
     
-    #Create the demo container
-    wdFrm = QtWidgets.QWidget()
-    layout = QtWidgets.QVBoxLayout(wdFrm)
 
-    #A line edit to display computation step
-    wdLineEdit = QtWidgets.QLineEdit("No computation running")
-    layout.addWidget(wdLineEdit)
+        
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+
+    wdFrm = MyFrame(app)
     
-    #connect to the custom signal to print the step in the QLineEdit
-    app.connect(QtCore.SIGNAL("SEND_MESSAGE(QString)"),wdLineEdit.setText)
-
-    #Create a button to launch the computation
-    wdButtonCompute = QtWidgets.QPushButton("Compute")
-    layout.addWidget(wdButtonCompute)
-    wdButtonCompute.clicked.connect(Compute)
-
     wdFrm.show()
     
     sys.exit(app.exec_())

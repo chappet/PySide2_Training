@@ -21,6 +21,10 @@ class MyTextEditor(QMainWindow):
         QMainWindow.__init__(self)
         self.textEdit =  QPlainTextEdit()
         self.setCentralWidget(self.textEdit)
+        
+        #Enable mouse tracking
+        self.textEdit.setMouseTracking(True)        
+
     
         self.createActions()
 
@@ -29,6 +33,9 @@ class MyTextEditor(QMainWindow):
         self.setCurrentFile("")
         
         self.statusBar().showMessage('Ready')
+        
+        #Enable mouse tracking
+        self.setMouseTracking(True)        
 
     def createActions(self):
         
@@ -176,7 +183,13 @@ class MyTextEditor(QMainWindow):
         settings = QSettings("Trolltech", "Application Example")
         settings.setValue("pos", self.pos())
         settings.setValue("size", self.size())
-                    
+
+    def mouseMoveEvent(self,e):   
+        print("Mouse has moved {}".format(e))
+     
+    def mousePressEvent(self,e):   
+        print("Mouse was pressed {}".format(e))
+                        
     def closeEvent(self, event):
         if self.maybeSave():
             self.writeSettings()

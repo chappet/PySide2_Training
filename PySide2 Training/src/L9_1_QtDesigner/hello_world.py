@@ -31,7 +31,8 @@ class HelloWorldDiag(QDialog):
 
         self.wdDiag.show()
         
-        
+
+            
     def SayHello(self):
         print ("Hello ", self.wdDiag.wdLine.text())
 
