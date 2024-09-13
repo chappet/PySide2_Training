@@ -7,36 +7,28 @@ Display a QPushButton into a QFrame with static position and size (not recommend
 Show the effect of parent attribut.
 
 '''
-from PySide2 import QtCore, QtWidgets, QtGui
-from PySide2.QtWidgets import QApplication
-
 import sys
+from PySide6 import QtWidgets, QtGui
+from PySide6.QtWidgets import QApplication
     
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     
     wdFrm = QtWidgets.QFrame()
-    
-    #Set attributs
-    wdFrm.setFrameShadow(QtWidgets.QFrame.Plain)
-    wdFrm.setFrameShape(QtWidgets.QFrame.Box)
-    wdFrm.setLineWidth(5)    
-    wdFrm.show()
+    # wdFrm.resize(400,400) # Redimensionnement GUESS ! Commenter / décommenter
 
     #create a pushButton inside a QFrame by setting the parent
     wdPushButton = QtWidgets.QPushButton("Please Click !", parent = wdFrm)
-    
+    wdPushButton.move(10,10) # Positionnement absolu dans l'écran
+    wdPushButton.resize(100,40) # Redimensionnement
+
+    wdFrm.show() # GUESS ! Déplacer le show en ligne 19
+ 
     #TIPS ---------------------
     #Also try without a parent: 
     #--------------------------
-#     wdPushButton = QtWidgets.QPushButton("Please Click !")
+    # wdPushButton = QtWidgets.QPushButton("Please Click !")
+    # wdPushButton.show() # GUESS ! Commenter / décommenter
+
     
-    wdPushButton.move(10,10)
-    wdPushButton.resize(100,40)
-    wdPushButton.show()
-    
-
-
-        
-
-    sys.exit(app.exec_())
+    sys.exit(app.exec())

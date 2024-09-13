@@ -3,10 +3,10 @@ Created on 12 mars 2020
 
 @author: cchappet
 '''
-from PySide2 import QtCore, QtWidgets, QtGui
-from PySide2.QtWidgets import QApplication
-from PySide2.QtCore import Signal, Slot 
-import PySide2.QtMultimedia as QtMultimedia
+import sys
+from PySide6 import QtWidgets, QtGui, QtCore
+from PySide6.QtWidgets import QApplication
+import PySide6.QtMultimedia as QtMultimedia
 
 import sys
 
@@ -16,7 +16,7 @@ class MySoundPlayer(QtMultimedia.QMediaPlayer):
     """
     def __init__(self):
         super().__init__()
-        self.setVolume(100)
+        # self.setVolume(100)
     
     def SetAndPlay(self, url):
         self.setMedia(QtCore.QUrl.fromLocalFile(url))
